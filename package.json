@@ -1,0 +1,23 @@
+{
+  "name": "cypress_new",
+  "version": "1.0.0",
+  "description": "framework by me",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "keywords": [
+    "e2e",
+    "test",
+    "cypress"
+  ],
+  "author": "brijesh chandra",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BrijeshChandra7/cypress_brijesh.git"
+  },
+  "devDependencies": {
+    "cypress": "^13.3.0"
+  }
+}
