@@ -5,6 +5,7 @@ describe('Assertion', ()=> {
         // This code will run before each test case in this describe block
         cy.visit('https://rahulshettyacademy.com/AutomationPractice/'); 
       });
+      
  
     it("Assertion", ()=>{
 
@@ -60,21 +61,86 @@ it('Dropdown',()=>{
     cy.get("#dropdown-class-example").select(1);
     cy.get('Select option').should('be.selected');
 
+    cy.wait(2000);
+
+    cy.get("#dropdown-class-example").select('Option2');
+    cy.get('Select option').should('be.selected');
+
+    cy.wait(2000);
+
+    cy.get("#dropdown-class-example").select('option3');
+    cy.get('Select option').should('be.selected');
+
+
 
 })
 
-it('Random',()=>{
+it.only('Random',()=>{
    
     cy.get('#autocomplete').type('I reached here');
+
     cy.scrollTo(0, 500);
+
     cy.scrollTo(0,-500);
+
     cy.get('fieldset .totalAmount').scrollIntoView();
 
-})
-it('Mouse',()=>{
-    //cy.get('#mousehover').scrollIntoView();
-    cy.get('#mousehover').trigger('mouseover');
+    cy.scrollTo('bottom');
+
+
+})  
+
+/* it('Mouse',()=>{
+    cy.visit('https://the-internet.herokuapp.com/hovers');
+    cy.get('img[src="/img/avatar-blank.jpg"]').eq(0).trigger('mouseover');
+    cy.get('h5').eq(0).should('contain','name: user1');
    
+}) */
+
+
+it('Table',()=>{
+    
+    cy.get('table[name="courses"] tbody tr').eq(0).get('td').eq(0).scrollIntoView().should('have.text','Rahul Shetty');
+
+    cy.get('table[name="courses"] tbody tr').eq(0).get('td').eq(1).should('have.text','Selenium Webdriver with Java Basics + Advanced + Interview Guide');
+
+    cy.get('table[name="courses"] tbody tr').eq(0).get('td').eq(2).should('have.text','30');
 })
+
+it('Tab',()=>{
+cy.get('#opentab').then(function(el){
+
+    var url1=el.prop('href');
+    cy.log(url1);
+    cy.visit(url1);
+    cy.origin(url1,()=>{
+   cy.visit(url1);
+   //var url=cy.url();
+    //cy.log(url);
+    //.title().should('eq','QAClick Academy - A Testing Academy to Learn, Earn and Shine');
+ })
+    
+
+   })
+    //cy.get('#opentab').click();
+    //cy.window();
+  //  cy.url().should('eq','https://www.qaclickacademy.com/');
+   // cy.title().should('eq','QAClick Academy - A Testing Academy to Learn, Earn and Shine');
+})
+
+it('New Window',()=>{
+
+    cy.get('#openwindow').click();
+})
+
+
+it('IFrame',()=>{
+
+    const getiframe=cy.get('#courses-iframe').its('0.contentDocument.body').should('be.visible').then(cy.wrap);
+
+   getiframe.find('a[href="https://www.youtube.com/channel/UCgx5SDcUQWCQ_1CNneQzCRw"]').click();
+   
+   getiframe.find('a[href="https://courses.rahulshettyacademy.com/sign_up"]').eq(0).click();
+})  
 
 })
