@@ -18,6 +18,17 @@
     "url": "https://github.com/BrijeshChandra7/cypress_brijesh.git"
   },
   "devDependencies": {
-    "cypress": "^13.3.0"
+    "@4tw/cypress-drag-drop": "^2.2.5",
+    "cypress": "^13.3.0",
+    "cypress-file-upload": "^5.0.8"
+  },
+  "dependencies": {
+    "cypress-drag-drop": "^1.1.1"
+  },
+
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+   "cy:spec": "cypress run --spec"
   }
 }
