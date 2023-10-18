@@ -107,9 +107,9 @@ it('Table',()=>{
     cy.get('table[name="courses"] tbody tr').eq(0).get('td').eq(2).should('have.text','30');
 })
 
-it('Tab',()=>{
+/*.only('Tab',()=>{
 cy.get('#opentab').then(function(el){
-
+    cy.once('uncaught:exception', () => false);
     var url1=el.prop('href');
     cy.log(url1);
     cy.visit(url1);
@@ -126,7 +126,24 @@ cy.get('#opentab').then(function(el){
     //cy.window();
   //  cy.url().should('eq','https://www.qaclickacademy.com/');
    // cy.title().should('eq','QAClick Academy - A Testing Academy to Learn, Earn and Shine');
-})
+}) */
+
+it('Tab', () => {
+    cy.get('#opentab').then(function (el) {
+      cy.once('uncaught:exception', () => false);
+      const url1 = el.prop('href');
+      cy.log(url1);
+  
+      // Open a new tab using window.open()
+      cy.window().then(win => {
+        win.open(url1, '_blank');
+       
+      });
+      cy.url().should('eq','https://www.qaclickacademy.com/');
+      // You can add additional assertions or commands here if needed
+    });
+  });
+  
 
 it('New Window',()=>{
 
@@ -136,11 +153,60 @@ it('New Window',()=>{
 
 it('IFrame',()=>{
 
-    const getiframe=cy.get('#courses-iframe').its('0.contentDocument.body').should('be.visible').then(cy.wrap);
+   const getiframe=cy.get('#courses-iframe').its('0.contentDocument.body').should('be.visible').then(cy.wrap);
 
    getiframe.find('a[href="https://www.youtube.com/channel/UCgx5SDcUQWCQ_1CNneQzCRw"]').click();
    
    getiframe.find('a[href="https://courses.rahulshettyacademy.com/sign_up"]').eq(0).click();
 })  
 
+it('Custom handle',()=>{
+  cy.clickOnButton('HOME');
+  cy.wait(2000);
+  cy.go('back');
+  cy.clickOnLink('Free Access to InterviewQues/ResumeAssistance/Material');
 })
+
+
+
+/*it.only('should assert blinking text', () => {
+  // Get the element that contains the blinking text
+  cy.get('.blinkingText').then($element => {
+    const initialColor = $element.css('color');
+
+    // Wait for a while to allow the blinking effect to happen
+    cy.wait(260);
+
+    // Assert that the color has changed (indicating a "blink")
+    cy.get('.blinkingText').should('have.css', 'color').then(color => {
+      expect(color).not.to.equal(initialColor);
+    });
+  });
+}); */
+
+it('should assert blinking background color', () => {
+  // Get the element that contains the blinking background
+  cy.get('.blinkingText').then($element => {
+    const initialBackgroundColor = $element.css('background-color');
+
+    // Wait for a while to allow the blinking effect to happen
+    cy.wait(1300);
+
+    // Assert that the background color has changed (indicating a "blink")
+    cy.get('.blinkingText').should('have.css', 'background-color').then(backgroundColor => {
+      expect(backgroundColor).not.to.equal(initialBackgroundColor);
+    });
+  });
+});
+
+it.only('Fixture',()=>{
+  cy.fixture('MyData').then( (data)=>{
+    cy.get('#autocomplete').type(data.text);
+  })
+ 
+
+})
+
+})
+
+
