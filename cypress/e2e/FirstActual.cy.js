@@ -10,6 +10,6 @@ describe('Visit page', () => {
     })
 
    it('visiting next another page', ()=> {
-        cy.visit('https:facebook.com')  // ? very much time taking to give result, not giving result ?
+        cy.visit('https://facebook.com')  // ? very much time taking to give result, not giving result ?
     }) 
   })

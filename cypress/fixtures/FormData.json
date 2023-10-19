@@ -1,0 +1,14 @@
+{
+    "FirstName": "Akshay",
+    "LastName": "Kumar",
+    "Email":"abc@yahoo.com",
+    "Mobile":"88888888",
+    "DOB":"19 October 2020",
+    "Subjects":"English,Hindi,Maths",
+    "CurrAddr":"INDIA",
+    "Gender":"Male",
+    "Hobby1":"Sports",
+    "Hobby2":"Music",
+    "body": "Fixtures are a great way to mock data for responses to routes"
+  }
+  

@@ -4,7 +4,10 @@
   "description": "framework by me",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run",
+    "cy:spec": "cypress run --spec",
+    "cypress-dashboard-run": "npx cypress run --record --key=14a5dceb-5faf-4a58-bca6-8d256f1e52c6"
   },
   "keywords": [
     "e2e",
@@ -20,15 +23,10 @@
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^2.2.5",
     "cypress": "^13.3.0",
-    "cypress-file-upload": "^5.0.8"
+    "cypress-file-upload": "^5.0.8",
+    "cypress-mochawesome-reporter": "^3.6.1"
   },
   "dependencies": {
     "cypress-drag-drop": "^1.1.1"
-  },
-
-  "scripts": {
-    "cy:open": "cypress open",
-    "cy:run": "cypress run",
-   "cy:spec": "cypress run --spec"
   }
 }
